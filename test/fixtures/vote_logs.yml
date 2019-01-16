@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  candidare: one
+  ip_address: MyString
+
+two:
+  candidare: two
+  ip_address: MyString
