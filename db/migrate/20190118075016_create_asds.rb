@@ -7,7 +7,8 @@ class CreateAsds < ActiveRecord::Migration[5.2]
 
         t.timestamps
       end
+      Asd.create(title: "aaa1", content: "qqqq")
+      Asd.create(title: "acs", content: "GGG")
     end
-    Asd.create(title: "aaa1", content: "qqqq")
-    Asd.create(title: "acs", content: "GGG")
+
   end
