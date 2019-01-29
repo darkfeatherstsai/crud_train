@@ -18,7 +18,7 @@ class CandidatesController < ApplicationController
     @candidate = Candidate.new(candidate_params)
 
     if @candidate.save
-      ContactMailer.say_hello_to(@candidate).deliver_now
+      CandidateConfirmEmailJob.perform_later(@candidate)
       redirect_to candidates_path, notice: "新增候選人成功"
     else
       render :new
