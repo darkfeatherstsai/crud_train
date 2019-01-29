@@ -3,7 +3,10 @@ class CandidatesController < ApplicationController
   before_action :find_candidate, only: [:edit, :update, :destroy, :vote]
   def index
     @candidates = Candidate.all
-    render layout: "backend"
+    respond_to do |format|
+      format.json {render json: @candidates}
+      format.html {render layout: "backend"}
+    end
   end
 
   def new
@@ -15,6 +18,7 @@ class CandidatesController < ApplicationController
     @candidate = Candidate.new(candidate_params)
 
     if @candidate.save
+      ContactMailer.say_hello_to(@candidate).deliver_now
       redirect_to candidates_path, notice: "新增候選人成功"
     else
       render :new
@@ -48,7 +52,7 @@ class CandidatesController < ApplicationController
 
   private
   def candidate_params
-      params.require(:candidate).permit(:name, :age, :party, :politics)
+      params.require(:candidate).permit(:name, :age, :party, :email, :politics)
   end
 
   def find_candidate

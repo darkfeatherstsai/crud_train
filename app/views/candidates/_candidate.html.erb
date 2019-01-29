@@ -2,6 +2,7 @@
   <td><%= link_to "投給這位", vote_candidate_path(candidate), method: "post", data: { confirm: "確認要投給這位候選人嗎?!" }, class: "btn btn-danger btn-xs" %></td>
   <td><%= candidate.name %>(年齡：<%= candidate.age %> 歲)</td>
   <td><%= candidate.party %></td>
+  <td><%= candidate.email %></td>
   <td><%= candidate.politics %></td>
   <td><%= candidate.votes %></td>
   <td>
